@@ -12,18 +12,24 @@ EntityTrigger = ig.Entity.extend({
     _wmScalable: true,
     _wmDrawBox: true,
     _wmBoxColor: 'rgba(0,255,0,0.2)',
-
-    checkAgainst: ig.Entity.TYPE.BOTH,
+    name: "Trig",
+    type: ig.Entity.TYPE.B,
     collides: ig.Entity.COLLIDES.NONE,
-
+    
     target: {},
 
-
-    update: function() {},
+    update: function() {
+        
+    },
 
     check: function( other ) {
-        if(other instanceof EntityPlayer){
-            ig.log("It worked");
+        for (var t in this.target)
+        {
+            var ent = ig.game.getEntityByName (this.target[t]);
+            if (ent && ent instanceof EntityPlayer)
+            {
+                ig.log("Display Test");
+            }
         }
     }
 })

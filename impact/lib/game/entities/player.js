@@ -10,6 +10,7 @@ ig.module(
 EntityPlayer = ig.Entity.extend({
     size: {x: 32, y:48},
     collides: ig.Entity.COLLIDES.PASSIVE,
+    checkAgainst: ig.Entity.TYPE.B,
 
     animSheet: new ig.AnimationSheet( 'media/PlayerTestSpriteSheet.png', 32, 48),
 
@@ -20,7 +21,7 @@ EntityPlayer = ig.Entity.extend({
 
     init: function( x, y, settings){
         this.parent( x, y, settings);
-
+        ig.Entity.TYPE.A;
         this.addAnim( 'idle', 1, [0])
     },
 
@@ -49,7 +50,14 @@ EntityPlayer = ig.Entity.extend({
     },
 
     check: function(other) {
-        ig.log("Kill me")
+        if (other.name == "Trig")
+        {        
+            ig.log("Kill me");
+        }
+        if (other.name == "High")
+        {
+            ig.log("Show Me the Light");
+        }
     }
 
 })
