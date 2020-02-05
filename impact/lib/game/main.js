@@ -11,6 +11,8 @@ ig.module(
 	'game.entities.testTrigger',
 	'game.entities.trigger',
 	'game.entities.Highlight',
+	'game.entities.warp',
+	'game.entities.void',
 
 	'game.levels.main'
 )

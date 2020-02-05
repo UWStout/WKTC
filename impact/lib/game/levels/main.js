@@ -1,16 +1,8 @@
 ig.module( 'game.levels.main' )
-.requires( 'impact.image','game.entities.player','game.entities.Highlight' )
+.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.warp','game.entities.void','game.entities.player' )
 .defines(function(){
 LevelMain=/*JSON[*/{
 	"entities": [
-		{
-			"type": "EntityPlayer",
-			"x": 428,
-			"y": 132,
-			"settings": {
-				"name": "player"
-			}
-		},
 		{
 			"type": "EntityHighlight",
 			"x": 276,
@@ -23,12 +15,93 @@ LevelMain=/*JSON[*/{
 		},
 		{
 			"type": "EntityHighlight",
-			"x": 176,
-			"y": 220,
+			"x": 244,
+			"y": 44,
 			"settings": {
 				"target": {
 					"1": "player"
 				}
+			}
+		},
+		{
+			"type": "EntityHighlight",
+			"x": 296,
+			"y": 116,
+			"settings": {
+				"target": {
+					"1": "player"
+				}
+			}
+		},
+		{
+			"type": "EntityTrigger",
+			"x": 92,
+			"y": 120,
+			"settings": {
+				"size": {
+					"x": 48,
+					"y": 16
+				},
+				"target": {
+					"1": "player"
+				},
+				"type": "B"
+			}
+		},
+		{
+			"type": "EntityWarp",
+			"x": 204,
+			"y": 240,
+			"settings": {
+				"name": "WarpUp",
+				"spawn": "Upper Trigger"
+			}
+		},
+		{
+			"type": "EntityVoid",
+			"x": 88,
+			"y": 240,
+			"settings": {
+				"name": "Bottom"
+			}
+		},
+		{
+			"type": "EntityWarp",
+			"x": 56,
+			"y": 76,
+			"settings": {
+				"name": "WarpDown",
+				"spawn": "Bottom Trigger"
+			}
+		},
+		{
+			"type": "EntityTrigger",
+			"x": 148,
+			"y": 240,
+			"settings": {
+				"size": {
+					"x": 56,
+					"y": 16
+				},
+				"target": {
+					"1": "WarpUp"
+				}
+			}
+		},
+		{
+			"type": "EntityVoid",
+			"x": 192,
+			"y": 76,
+			"settings": {
+				"name": "Upper Trigger"
+			}
+		},
+		{
+			"type": "EntityPlayer",
+			"x": 428,
+			"y": 132,
+			"settings": {
+				"name": "player"
 			}
 		}
 	],

@@ -9,9 +9,9 @@ ig.module(
 
     EntityHighlight = ig.Entity.extend({
         size: {x: 32, y:32},
-
+        name: "High",
         animSheet: new ig.AnimationSheet('media /Highlight.png',32,32),
-
+        type: ig.Entity.TYPE.B,
         target: {},
 
         zIndex: 0,
