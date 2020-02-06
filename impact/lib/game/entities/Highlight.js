@@ -48,7 +48,7 @@ ig.module(
 
             if(ig.input.pressed('action') && this.currentAnim == this.anims.highlight){
                 ig.log("Display Text");
-                var textBox = ig.game.spawnEntity(EntityTextBox, ig.system.width/2, ig.system.height - 32);
+                var textBox = ig.game.spawnEntity(EntityTextBox, 32, ig.system.height - 32);
 
             }
         

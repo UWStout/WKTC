@@ -14,7 +14,7 @@ EntityTextBox = ig.Entity.extend({
         size: {x: 90, y: 90},
         pos: {x:0, y:0},
         //Text you want to be displayed
-        textString:'This is a text box and I am displaying text',
+        textString:'This is a text box and I am displaying text tejktlej teklejt lkejltkejt lekjtejt lkejtlet dusdfj tejsld lt s tl e elelee t eod tt t e sd jfdk tjek tke dkt id tk dit ei tid iteite eiteit eitie tie tiiei kdkd kdigj',
         //Stores the length of textArray
         textStringLength:null,
         //Array that stores each of the characters of textString
@@ -24,7 +24,7 @@ EntityTextBox = ig.Entity.extend({
         //String used to draw the text to the screen
         displayText:'',
         //Maximum length of charaters that can be on a line
-        maxWidth:250,
+        maxWidth:200,
 
         animSheet: new ig.AnimationSheet('media /TextBox.png',128,32),
 
@@ -41,8 +41,6 @@ EntityTextBox = ig.Entity.extend({
             this.textArray = this.textString.split('');
             //Store the lengeth of that array
             this.textStringLength = this.textArray.length;
-            var x = ig.system.width/2;
-            var y = ig.system.height - 32;
 
             this.addAnim('idle', 1, [0]);
         },
@@ -54,8 +52,6 @@ EntityTextBox = ig.Entity.extend({
         draw: function() {
             //Create a font
             var font = new ig.Font( 'media/04b03.font.png' );
-            var x = ig.system.width/2;
-            var y = ig.system.height - 32;
 
             //Check to see if the current charater is less than the string length
             if(this.textCurrentChar <= this.textStringLength){
@@ -63,27 +59,16 @@ EntityTextBox = ig.Entity.extend({
                 this.displayText = '';
                 //Counter to keep track of how many line break we have
                 var lineBreaks = 1;
-                //Character where the line breaks first
-                var breakChar = null;
 
-                //Draw letter one by one until we have the first string
-                for (var i= 0; i < this.textCurrentChar; i++){
+                //Draw letter one by one until we have the full string
+                for (var i= 0; i < this.textCurrentChar; i++) {
                     this.displayText += this.textArray[i];
-                    //If we reach our max width
-                    if(font.widthForString(this.displayText) > this.maxWidth){
-                        //If we have not broken the line before
-                        if(breakChar == null && this.textArray[i] == ' '){
-                            breakChar = i;
+                    //If we reach our max width on a line
+                    if(font.widthForString(this.displayText) > (this.maxWidth * lineBreaks)) {
+                        //If the charcter is a space enter a new line.
+                        if(this.textArray[i] == ' ' ) {
                             this.displayText = this.displayText+ '\n';
                             lineBreaks++;
-                        }
-                        //If we have broken a line
-                        else{
-                            //if we are near that character 
-                            if(i >= (breakChar*lineBreaks) && this.textArray[i] == ' '){
-                                this.displayText = this.displayText+ '\n';
-                                lineBreaks++;
-                            }
                         }
                     }
                 }
@@ -92,13 +77,14 @@ EntityTextBox = ig.Entity.extend({
             else{
                 this.done = true;
             }
-            font.draw( this.displayText, this.pos.x, this.pos.y-(font.heightForString(this.displayText)/2), ig.Font.ALIGN.CENTER );
+            font.draw( this.displayText, this.pos.x, this.pos.y-(font.heightForString(this.displayText)/2), ig.Font.ALIGN.LEFT );
             this.parent();
         },
-        update: function(){
+        update: function() {
             this.parent();
 
-            this.pos.x = ig.system.width/2;
+            //Updates Textbox and Text position
+            this.pos.x = 32;
             this.pos.y = ig.system.height - 32;
 
             if(ig.input.pressed('action') && this.done == true){
