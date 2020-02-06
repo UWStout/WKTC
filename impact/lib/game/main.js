@@ -13,6 +13,7 @@ ig.module(
 	'game.entities.Highlight',
 	'game.entities.warp',
 	'game.entities.void',
+	'game.entities.textBox',
 
 	'game.levels.main'
 )
@@ -34,6 +35,8 @@ MyGame = ig.Game.extend({
 		ig.input.bind(ig.KEY.MOUSE1, 'click');
 
 		this.loadLevel( LevelMain );
+
+		
 	},
 	
 	update: function() {
@@ -41,6 +44,14 @@ MyGame = ig.Game.extend({
 		this.parent();
 		
 		// Add your own, additional update code here
+
+		//Camera Follow Code
+		//May want to change later for bounds of the camera and other stuff, but is fine for now.
+		var gameviewport = ig.game.screen;
+		var gamecanvas = ig.system;
+		var player = this.getEntitiesByType( EntityPlayer )[0];
+		gameviewport.x = player.pos.x - gamecanvas.width / 2;
+		gameviewport.y = player.pos.y - gamecanvas.height / 2;
 	},
 	
 	draw: function() {

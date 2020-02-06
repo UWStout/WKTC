@@ -3,7 +3,8 @@ ig.module(
 )
 .requires(
     'impact.entity',
-    'game.entities.player'
+    'game.entities.player',
+    'game.entities.textBox'
 )
 .defines(function(){
 
@@ -47,7 +48,8 @@ ig.module(
 
             if(ig.input.pressed('action') && this.currentAnim == this.anims.highlight){
                 ig.log("Display Text");
-                this.kill();
+                var textBox = ig.game.spawnEntity(EntityTextBox, ig.system.width/2, ig.system.height - 32);
+
             }
         
 
