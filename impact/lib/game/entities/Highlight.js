@@ -46,7 +46,9 @@ ig.module(
                 }
             }
 
-            if(ig.input.pressed('action') && this.currentAnim == this.anims.highlight && !ig.game.frozen){
+
+            
+            if(ig.input.pressed('action') && this.currentAnim == this.anims.highlight && ig.game.frozen == false){
                 ig.log("Display Text");
 
                 for(var t in this.target){
@@ -59,9 +61,8 @@ ig.module(
                 var textBox = ig.game.spawnEntity(EntityTextBox, 32, ig.system.height - 32);
 
             }
-            else{
-                ig.game.frozen = false;
-            }
+            
+            
         
 
             this.parent();

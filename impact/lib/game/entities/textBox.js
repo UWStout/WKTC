@@ -81,15 +81,22 @@ EntityTextBox = ig.Entity.extend({
             this.parent();
         },
         update: function() {
-            this.parent();
-
+            
+            
             //Updates Textbox and Text position
             this.pos.x = 32;
             this.pos.y = ig.system.height - 32;
 
-            if(ig.input.pressed('action') && this.done == true){
+            if(ig.input.pressed('action') && this.done) {
+                ig.game.frozen = false;
+                this.done = false;
+                ig.log(ig.game.frozen);
+
+
                 this.kill();
             }
+
+            this.parent();
         }
     })
 

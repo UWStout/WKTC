@@ -5,8 +5,8 @@ LevelMain=/*JSON[*/{
 	"entities": [
 		{
 			"type": "EntityHighlight",
-			"x": 276,
-			"y": 80,
+			"x": 216,
+			"y": 368,
 			"settings": {
 				"target": {
 					"1": "player"
@@ -15,8 +15,8 @@ LevelMain=/*JSON[*/{
 		},
 		{
 			"type": "EntityHighlight",
-			"x": 244,
-			"y": 44,
+			"x": 300,
+			"y": 56,
 			"settings": {
 				"target": {
 					"1": "player"
@@ -25,8 +25,8 @@ LevelMain=/*JSON[*/{
 		},
 		{
 			"type": "EntityHighlight",
-			"x": 296,
-			"y": 116,
+			"x": 404,
+			"y": 340,
 			"settings": {
 				"target": {
 					"1": "player"
