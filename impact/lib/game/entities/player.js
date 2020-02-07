@@ -26,27 +26,33 @@ EntityPlayer = ig.Entity.extend({
     },
 
     update: function(){
-        if(ig.input.state('up')){
+
+        this.parent();
+
+        ig.log(ig.game.frozen);
+
+        if(ig.input.state('up')  && !ig.game.frozen){
             this.vel.y = -100;
+            ig.log("Working");
         }
-        else if(ig.input.state('down')){
+        else if(ig.input.state('down') && !ig.game.frozen){
             this.vel.y = 100;
         }
         else{
             this.vel.y = 0;
         }
 
-        if(ig.input.state('left')){
+        if(ig.input.state('left') && !ig.game.frozen){
             this.vel.x = -100;
         }
-        else if(ig.input.state('right')){
+        else if(ig.input.state('right') && !ig.game.frozen){
             this.vel.x = 100;
         }
         else{
             this.vel.x = 0;
         }
 
-        this.parent();
+        
     },
 
     check: function(other) {
