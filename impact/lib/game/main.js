@@ -27,6 +27,10 @@ MyGame = ig.Game.extend({
 	font: new ig.Font( 'media/04b03.font.png' ),
 	
 	frozen: false,
+
+	puzzle: new ig.puzzle(),
+
+	puzzleOn: false,
 	
 	init: function() {
 		// Initialize your game here; bind keys etc.
