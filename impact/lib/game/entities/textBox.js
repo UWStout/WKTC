@@ -24,9 +24,9 @@ EntityTextBox = ig.Entity.extend({
         //String used to draw the text to the screen
         displayText:'',
         //Maximum length of charaters that can be on a line
-        maxWidth:200,
+        maxWidth:100,
 
-        animSheet: new ig.AnimationSheet('media /TextBox.png',128,32),
+        //animSheet: new ig.AnimationSheet('media /TextBox.png',128,32),
 
         done: false,
 
@@ -42,7 +42,7 @@ EntityTextBox = ig.Entity.extend({
             //Store the lengeth of that array
             this.textStringLength = this.textArray.length;
 
-            this.addAnim('idle', 1, [0]);
+            //this.addAnim('idle', 1, [0]);
         },
 
         kill:function(){

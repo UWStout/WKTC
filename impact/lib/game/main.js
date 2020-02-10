@@ -14,6 +14,8 @@ ig.module(
 	'game.entities.warp',
 	'game.entities.void',
 	'game.entities.textBox',
+	'game.entities.puzzle',
+	'game.eneitties.matching',
 
 	'game.levels.main'
 )
