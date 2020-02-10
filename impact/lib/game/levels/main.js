@@ -1,5 +1,5 @@
 ig.module( 'game.levels.main' )
-.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.warp','game.entities.void','game.entities.player' )
+.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.player' )
 .defines(function(){
 LevelMain=/*JSON[*/{
 	"entities": [
@@ -49,32 +49,6 @@ LevelMain=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntityWarp",
-			"x": 204,
-			"y": 240,
-			"settings": {
-				"name": "WarpUp",
-				"spawn": "Upper Trigger"
-			}
-		},
-		{
-			"type": "EntityVoid",
-			"x": 88,
-			"y": 240,
-			"settings": {
-				"name": "Bottom"
-			}
-		},
-		{
-			"type": "EntityWarp",
-			"x": 56,
-			"y": 76,
-			"settings": {
-				"name": "WarpDown",
-				"spawn": "Bottom Trigger"
-			}
-		},
-		{
 			"type": "EntityTrigger",
 			"x": 148,
 			"y": 240,
@@ -86,14 +60,6 @@ LevelMain=/*JSON[*/{
 				"target": {
 					"1": "WarpUp"
 				}
-			}
-		},
-		{
-			"type": "EntityVoid",
-			"x": 192,
-			"y": 76,
-			"settings": {
-				"name": "Upper Trigger"
 			}
 		},
 		{

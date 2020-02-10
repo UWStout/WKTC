@@ -11,11 +11,7 @@ ig.module(
 	'game.entities.testTrigger',
 	'game.entities.trigger',
 	'game.entities.Highlight',
-	'game.entities.warp',
-	'game.entities.void',
 	'game.entities.textBox',
-	'game.entities.puzzle',
-	'game.eneitties.matching',
 
 	'game.levels.main'
 )
@@ -28,7 +24,6 @@ MyGame = ig.Game.extend({
 	
 	frozen: false,
 
-	puzzle: new ig.puzzle(),
 
 	puzzleOn: false,
 	
@@ -57,8 +52,17 @@ MyGame = ig.Game.extend({
 		var gameviewport = ig.game.screen;
 		var gamecanvas = ig.system;
 		var player = this.getEntitiesByType( EntityPlayer )[0];
-		gameviewport.x = player.pos.x - gamecanvas.width / 2;
-		gameviewport.y = player.pos.y - gamecanvas.height / 2;
+
+		
+
+		if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 32 * 16) {
+			gameviewport.x = player.pos.x - gamecanvas.width / 2;
+		}
+		
+		if(player.pos.y - gamecanvas.height / 2 > 0 && player.pos.y - gamecanvas.height / 2 < 32 * 10){
+			gameviewport.y = player.pos.y - gamecanvas.height / 2;
+		}
+		
 	},
 	
 	draw: function() {
