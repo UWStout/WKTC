@@ -20,7 +20,8 @@ LevelMain=/*JSON[*/{
 			"settings": {
 				"target": {
 					"1": "player"
-				}
+				},
+				"text": "This is a Random Message"
 			}
 		},
 		{
@@ -30,7 +31,8 @@ LevelMain=/*JSON[*/{
 			"settings": {
 				"target": {
 					"1": "player"
-				}
+				},
+				"text": "Nope"
 			}
 		},
 		{

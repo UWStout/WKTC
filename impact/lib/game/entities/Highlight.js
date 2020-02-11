@@ -14,9 +14,9 @@ ig.module(
         animSheet: new ig.AnimationSheet('media /Highlight.png',32,32),
         type: ig.Entity.TYPE.B,
         target: {},
+        text: '',
 
         zIndex: 0,
-
 
         init: function(x, y , settings){
             this.parent(x,y,settings);
@@ -49,7 +49,6 @@ ig.module(
 
             
             if(ig.input.pressed('action') && this.currentAnim == this.anims.highlight && ig.game.frozen == false){
-                ig.log("Display Text");
 
                 for(var t in this.target){
                     if(ent && ent instanceof EntityPlayer){
@@ -59,6 +58,7 @@ ig.module(
                 }
             
                 var textBox = ig.game.spawnEntity(EntityTextBox, 32, ig.system.height - 32);
+                textBox.setText(this.text);
 
             }
             

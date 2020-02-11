@@ -14,7 +14,7 @@ EntityTextBox = ig.Entity.extend({
         size: {x: 90, y: 90},
         pos: {x:0, y:0},
         //Text you want to be displayed
-        textString:'This is a text box and I am displaying text tejktlej teklejt lkejltkejt lekjtejt lkejtlet dusdfj tejsld lt s tl e elelee t eod tt t e sd jfdk tjek tke dkt id tk dit ei tid iteite eiteit eitie tie tiiei kdkd kdigj',
+        textString: 'This is a text box and I am displaying text',
         //Stores the length of textArray
         textStringLength:null,
         //Array that stores each of the characters of textString
@@ -37,12 +37,18 @@ EntityTextBox = ig.Entity.extend({
 
         init: function( x, y, settings ) {
             this.parent( x, y, settings );
+
+            //this.addAnim('idle', 1, [0]);
+            
+        },
+
+        setText: function(text){
+            this.textString = text
+
             //Split the array into individual characters
             this.textArray = this.textString.split('');
             //Store the lengeth of that array
             this.textStringLength = this.textArray.length;
-
-            //this.addAnim('idle', 1, [0]);
         },
 
         kill:function(){
