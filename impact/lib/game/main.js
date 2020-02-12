@@ -12,6 +12,8 @@ ig.module(
 	'game.entities.trigger',
 	'game.entities.Highlight',
 	'game.entities.textBox',
+	'game.entities.menuClose',
+	'game.entities.puzzleBox',
 
 	'game.levels.main'
 )
@@ -21,11 +23,12 @@ MyGame = ig.Game.extend({
 	
 	// Load a font
 	font: new ig.Font( 'media/04b03.font.png' ),
-	
+	windowBox:new ig.Image("media/TestImage.png"),
 	frozen: false,
 
-
 	puzzleOn: false,
+
+	
 	
 	init: function() {
 		// Initialize your game here; bind keys etc.
@@ -63,18 +66,37 @@ MyGame = ig.Game.extend({
 			gameviewport.y = player.pos.y - gamecanvas.height / 2;
 		}
 		
+		if (ig.input.pressed('click') && this.puzzleOn == false){
+			this.puzzleOn = true//!this.puzzleOn;
+			//if (this.puzzleOn == true)
+			//{
+				ig.game.spawnEntity(EntityPuzzleBox, 32, 32);
+				ig.game.spawnEntity(EntityMenuClose, 32, 32);
+			//}
+		}
+		if (ig.input.pressed('click'))
+		{
+			ig.log("X is: " + ig.input.mouse.x);
+			ig.log("Y is: " + ig.input.mouse.y);
+		}
 	},
 	
 	draw: function() {
 		// Draw all entities and backgroundMaps
 		this.parent();
 		
+		if (this.puzzleOn == true)
+		{
+			//this.windowBox.draw(96,64);
+			ig.log(this.windowBox.width);
+		}
 	}
 });
 
 
+
 // Start the Game with 60fps, a resolution of 320x240, scaled
 // up by a factor of 2
-ig.main( '#canvas', MyGame, 60, 512, 320, 2 );
+ig.main( '#canvas', MyGame, 60, 576, 384, 1 );
 
 });
