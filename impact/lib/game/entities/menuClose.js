@@ -17,10 +17,6 @@ EntityMenuClose = ig.Entity.extend({
         this.addAnim( 'idle', 1, [0]);
 
         //ig.log("I spawned")
-
-
-        this.pos.x = ig.game.windowBox.width
-        this.pos.y = ig.game.windowBox.height
         ig.game.spawnEntity(EntityHighlight, this.pos.x, this.pos.y);
 
     },
@@ -37,6 +33,14 @@ EntityMenuClose = ig.Entity.extend({
                 
             }
         }
+    },
+    draw: function()
+    {
+        this.parent();
+        var offsetX = ig.game.screen.x;
+        var offsetY = ig.game.screen.y;
+        this.pos.x = offsetX + 480;
+        this.pos.y = offsetY + 32;
     }
 })
 })

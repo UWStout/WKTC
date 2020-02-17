@@ -7,13 +7,18 @@ ig.module(
 .defines(function(){
    
     EntityPuzzleBox = ig.Entity.extend({
-        animSheet: new ig.AnimationSheet('media /TestImage.png',320,192),
+        animSheet: new ig.AnimationSheet('media/TestImage.png',448,320),
         zIndex: 4,
         pos: {x: 32, y: 32},
         init:function(){
-            this.pos.x = 20;
-            this.pos.y = 20;
             this.addAnim( 'idle', 1, [0]);
+        },
+        draw: function(){
+            this.parent();
+            var offsetX = ig.game.screen.x;
+            var offsetY = ig.game.screen.y;
+            this.pos.x = offsetX + 64;
+            this.pos.y = offsetY + 32;
         }
     })
 })

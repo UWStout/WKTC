@@ -70,8 +70,8 @@ MyGame = ig.Game.extend({
 			this.puzzleOn = true//!this.puzzleOn;
 			//if (this.puzzleOn == true)
 			//{
-				ig.game.spawnEntity(EntityPuzzleBox, 32, 32);
-				ig.game.spawnEntity(EntityMenuClose, 32, 32);
+				ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
+				ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 			//}
 		}
 		if (ig.input.pressed('click'))
