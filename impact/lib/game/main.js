@@ -86,7 +86,7 @@ MyGame = ig.Game.extend({
 				var card = ig.game.spawnEntity(EntityMatchingCard)
 				card.coordX = i % 3;
 				card.coordY = Math.trunc(i/3);
-				card.matchingNumber = this.matchingArray[i]
+				card.matchNumber = this.matchingArray[i]
 			}
 			ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 		}

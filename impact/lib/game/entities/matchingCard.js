@@ -31,6 +31,32 @@ ig.module(
             var offsetY = ig.game.screen.y;
             this.pos.x = offsetX + 128 + this.coordX * 64;
             this.pos.y = offsetY + 40 + this.coordY * 64;
+        },
+        update: function(){
+            x = (ig.input.mouse.x + ig.game.screen.x);
+            y = (ig.input.mouse.y + ig.game.screen.y);
+            if(ig.input.pressed('click') && x >= this.pos.x && x <= this.pos.x + this.size.x && y >= this.pos.y && y <= this.pos.y + this.size.y && this.currentAnim == this.anims.idle){
+                switch(this.matchNumber){
+                    case 0:
+                        this.currentAnim = this.anims.square1
+                        break;
+                    case 1:
+                        this.currentAnim = this.anims.square2
+                        break;
+                    case 2:
+                        this.currentAnim = this.anims.circle1
+                        break;
+                    case 3:
+                        this.currentAnim = this.anims.circle2
+                        break;
+                    case 4:
+                        this.currentAnim = this.anims.star1
+                        break;
+                    case 5:
+                        this.currentAnim = this.anims.star2
+                        break;
+                }
+            }
         }
     })
 })
