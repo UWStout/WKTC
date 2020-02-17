@@ -14,6 +14,8 @@ ig.module(
 	'game.entities.textBox',
 	'game.entities.menuClose',
 	'game.entities.puzzleBox',
+	'game.entities.matchingBox',
+	'game.entities.matchingCard',
 
 	'game.levels.main'
 )
@@ -25,8 +27,11 @@ MyGame = ig.Game.extend({
 	font: new ig.Font( 'media/04b03.font.png' ),
 	windowBox:new ig.Image("media/TestImage.png"),
 	frozen: false,
+	currentPuzzle: null,
 
-	puzzleOn: false,
+	puzzleOn: true,
+	matchingOn: false,
+	matchingArray: [0,0,1,1,2,2,3,3,4,4,5,5],
 
 	
 	
@@ -66,19 +71,30 @@ MyGame = ig.Game.extend({
 			gameviewport.y = player.pos.y - gamecanvas.height / 2;
 		}
 		
-		if (ig.input.pressed('click') && this.puzzleOn == false){
+		/*if (ig.input.pressed('click') && this.puzzleOn == false){
 			this.puzzleOn = true//!this.puzzleOn;
 			//if (this.puzzleOn == true)
 			//{
 				ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
 				ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 			//}
+		}*/
+		if(ig.input.pressed('click') && this.matchingOn == false){
+			this.matchingOn = true;
+			ig.game.spawnEntity(EntityMatchingBox, 448, gameviewport.y);
+			for(var i = 0; i < 12; i++){
+				var card = ig.game.spawnEntity(EntityMatchingCard)
+				card.coordX = i % 3;
+				card.coordY = Math.trunc(i/3);
+				card.matchingNumber = this.matchingArray[i]
+			}
+			ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 		}
-		if (ig.input.pressed('click'))
+		/*if (ig.input.pressed('click'))
 		{
 			ig.log("X is: " + ig.input.mouse.x);
 			ig.log("Y is: " + ig.input.mouse.y);
-		}
+		}*/
 	},
 	
 	draw: function() {

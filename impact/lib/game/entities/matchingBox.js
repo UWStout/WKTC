@@ -1,12 +1,12 @@
 ig.module(
-    'game.entities.puzzleBox'
+    'game.entities.matchingBox'
 )
 .requires(
     'impact.entity',
 )
 .defines(function(){
    
-    EntityPuzzleBox = ig.Entity.extend({
+    EntityMatchingBox = ig.Entity.extend({
         animSheet: new ig.AnimationSheet('media/TestImage.png',448,320),
         zIndex: 4,
         pos: {x: 32, y: 32},

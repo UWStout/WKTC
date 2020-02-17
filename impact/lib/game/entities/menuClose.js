@@ -25,9 +25,14 @@ EntityMenuClose = ig.Entity.extend({
         {
             {
                 ig.log("Close");
-                var puzzleBox = ig.game.getEntitiesByType(EntityPuzzleBox)[0];
+                var puzzleBox = ig.game.currentPuzzle;
                 ig.game.puzzleOn = false;
+                ig.game.matchingOn = false;
                 //ig.game.puzzleBox = !ig.game.puzzleBox;
+                var cards = ig.game.getEntitiesByType(EntityMatchingCard)
+                for(var i = 0; i < cards.length; i++){
+                    cards[i].kill();
+                }
                 puzzleBox.kill();
                 this.kill();
                 
