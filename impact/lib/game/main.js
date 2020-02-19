@@ -17,6 +17,10 @@ ig.module(
 	'game.entities.matchingBox',
 	'game.entities.matchingCard',
 	'game.entities.RedVelvet',
+	'game.entities.CoffeeToffee',
+	'game.entities.Gingerbread',
+	'game.entities.SugarCookie',
+	'game.entities.SaltedCookie',
 
 	'game.levels.main'
 )

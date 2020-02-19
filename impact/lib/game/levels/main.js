@@ -1,5 +1,5 @@
 ig.module( 'game.levels.main' )
-.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.RedVelvet','game.entities.player' )
+.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.RedVelvet','game.entities.CoffeeToffee','game.entities.Gingerbread','game.entities.SugarCookie','game.entities.SaltedCookie','game.entities.player' )
 .defines(function(){
 LevelMain=/*JSON[*/{
 	"entities": [
@@ -70,6 +70,50 @@ LevelMain=/*JSON[*/{
 			"y": 96,
 			"settings": {
 				"text": "It wasn't me",
+				"target": {
+					"1": "player"
+				}
+			}
+		},
+		{
+			"type": "EntityCoffeeToffee",
+			"x": 248,
+			"y": 156,
+			"settings": {
+				"text": "I might have been me",
+				"target": {
+					"1": "player"
+				}
+			}
+		},
+		{
+			"type": "EntityGingerbread",
+			"x": 188,
+			"y": 60,
+			"settings": {
+				"text": "Go find some evidence",
+				"target": {
+					"1": "player"
+				}
+			}
+		},
+		{
+			"type": "EntitySugarCookie",
+			"x": 148,
+			"y": 60,
+			"settings": {
+				"text": "I think it was that salted fellow",
+				"target": {
+					"1": "player"
+				}
+			}
+		},
+		{
+			"type": "EntitySaltedCookie",
+			"x": 104,
+			"y": 60,
+			"settings": {
+				"text": "*************",
 				"target": {
 					"1": "player"
 				}
