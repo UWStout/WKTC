@@ -12,7 +12,7 @@ EntityPlayer = ig.Entity.extend({
     collides: ig.Entity.COLLIDES.PASSIVE,
     checkAgainst: ig.Entity.TYPE.B,
 
-    animSheet: new ig.AnimationSheet( 'media/PlayerTestSpriteSheet.png', 32, 48),
+    animSheet: new ig.AnimationSheet( 'media/Trex_Walking.png', 32, 32),
 
     name: "Player",
 
@@ -22,7 +22,11 @@ EntityPlayer = ig.Entity.extend({
     init: function( x, y, settings){
         this.parent( x, y, settings);
         ig.Entity.TYPE.A;
-        this.addAnim( 'idle', 1, [0])
+        this.addAnim( 'idle', 1, [0]);
+        this.addAnim( 'right', .2, [0, 1, 4, 5]);
+        this.addAnim( 'left', .2, [2, 3, 6, 7]);
+
+        this.currentAnim = this.anims.idle
     },
 
     update: function(){
@@ -41,12 +45,18 @@ EntityPlayer = ig.Entity.extend({
 
         if(ig.input.state('left') && ig.game.frozen == false){
             this.vel.x = -100;
+            this.currentAnim = this.anims.left;
         }
         else if(ig.input.state('right') && ig.game.frozen == false){
             this.vel.x = 100;
+            this.currentAnim = this.anims.right;
         }
         else{
             this.vel.x = 0;
+        }
+
+        if(this.vel.x == 0 && this.vel.y == 0){
+            this.currentAnim = this.anims.idle;
         }
     },
 

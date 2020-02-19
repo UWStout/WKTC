@@ -38,6 +38,11 @@ EntityMenuClose = ig.Entity.extend({
                 
             }
         }
+
+        if(ig.game.closeWindow == true){
+            this.kill();
+            ig.game.closeWindow = false;
+        }
     },
     draw: function()
     {

@@ -16,6 +16,7 @@ ig.module(
 	'game.entities.puzzleBox',
 	'game.entities.matchingBox',
 	'game.entities.matchingCard',
+	'game.entities.RedVelvet',
 
 	'game.levels.main'
 )
@@ -32,6 +33,11 @@ MyGame = ig.Game.extend({
 	puzzleOn: true,
 	matchingOn: false,
 	matchingArray: [0,0,1,1,2,2,3,3,4,4,5,5],
+	card1: null,
+	card2: null,
+	matches: 0,
+	closeWindow: false,
+	cardTimer: new ig.Timer(),
 
 	
 	
@@ -45,6 +51,11 @@ MyGame = ig.Game.extend({
 		ig.input.bind(ig.KEY.MOUSE1, 'click');
 
 		this.loadLevel( LevelMain );
+
+		this.matchingArray = this.shuffle(this.matchingArray);
+
+		this.cardTimer.set(.25);
+		this.cardTimer.pause();
 
 		
 	},
@@ -90,11 +101,39 @@ MyGame = ig.Game.extend({
 			}
 			ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 		}
-		/*if (ig.input.pressed('click'))
-		{
-			ig.log("X is: " + ig.input.mouse.x);
-			ig.log("Y is: " + ig.input.mouse.y);
-		}*/
+
+		if(this.card1 != null && this.card2 != null) {
+			this.cardTimer.unpause();
+			if(this.cardTimer.delta() >= 0.25) {
+				if(this.card1.matchNumber == this.card2.matchNumber){
+					this.card1.kill();
+					this.card2.kill();
+					this.card1 = null;
+					this.card2 = null;
+					this.matches++;
+				}
+				else{
+					this.card1.currentAnim = this.card1.anims.idle;
+					this.card2.currentAnim = this.card2.anims.idle;
+
+					this.card1 = null;
+					this.card2 = null;
+				}
+				this.cardTimer.reset();
+				this.cardTimer.pause();
+			}
+		}
+
+		if(this.matches == 6){
+			//Still need to add the evidence connection
+			this.currentPuzzle.kill();
+			this.matches = 0;
+			this.puzzleOn = false;
+			this.matchingOn = false;
+			this.closeWindow = true;
+			ig.log("Puzzle Solved")
+		}
+	
 	},
 	
 	draw: function() {
@@ -106,7 +145,27 @@ MyGame = ig.Game.extend({
 			//this.windowBox.draw(96,64);
 			ig.log(this.windowBox.width);
 		}
-	}
+	},
+
+	shuffle: function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+	  
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+	  
+		  // Pick a remaining element...
+		  randomIndex = Math.floor(Math.random() * currentIndex);
+		  currentIndex -= 1;
+	  
+		  // And swap it with the current element.
+		  temporaryValue = array[currentIndex];
+		  array[currentIndex] = array[randomIndex];
+		  array[randomIndex] = temporaryValue;
+		}
+	  
+		return array;
+	  }
+		
 });
 
 

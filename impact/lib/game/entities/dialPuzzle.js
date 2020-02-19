@@ -5,7 +5,7 @@ ig.module(
     'impact.entity',
 )
 .defines(function(){
-    EntityDial = ig.Entity.extend({
+    EntityDialPuzzle = ig.Entity.extend({
 
         animsheet: new ig.AnimationSheet('media/Dials.png', 320, 256),
         init:function(){

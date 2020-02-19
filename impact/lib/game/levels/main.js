@@ -1,5 +1,5 @@
 ig.module( 'game.levels.main' )
-.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.player' )
+.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.RedVelvet','game.entities.player' )
 .defines(function(){
 LevelMain=/*JSON[*/{
 	"entities": [
@@ -61,6 +61,17 @@ LevelMain=/*JSON[*/{
 				},
 				"target": {
 					"1": "WarpUp"
+				}
+			}
+		},
+		{
+			"type": "EntityRedVelvet",
+			"x": 260,
+			"y": 96,
+			"settings": {
+				"text": "It wasn't me",
+				"target": {
+					"1": "player"
 				}
 			}
 		},
