@@ -22,8 +22,13 @@ ig.module(
 	'game.entities.SugarCookie',
 	'game.entities.SaltedCookie',
 	'game.entities.dialPuzzle',
+	'game.entities.MainMenu',
+	'game.entities.StartButton',
+	'game.entities.HowToPlay',
+	'game.entities.credits',
 
-	'game.levels.main'
+	'game.levels.main',
+	'game.levels.MainMenu'
 )
 .defines(function(){
 
@@ -56,7 +61,7 @@ MyGame = ig.Game.extend({
 		ig.input.bind(ig.KEY.E, 'action');
 		ig.input.bind(ig.KEY.MOUSE1, 'click');
 
-		this.loadLevel( LevelMain );
+		this.loadLevel( LevelMainMenu );
 
 		this.matchingArray = this.shuffle(this.matchingArray);
 
@@ -79,15 +84,16 @@ MyGame = ig.Game.extend({
 		var player = this.getEntitiesByType( EntityPlayer )[0];
 
 		
-
-		if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 32 * 16) {
-			gameviewport.x = player.pos.x - gamecanvas.width / 2;
+		if(player != null){
+			if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 32 * 16) {
+				gameviewport.x = player.pos.x - gamecanvas.width / 2;
+			}
+			
+			if(player.pos.y - gamecanvas.height / 2 > 0 && player.pos.y - gamecanvas.height / 2 < 32 * 10){
+				gameviewport.y = player.pos.y - gamecanvas.height / 2;
+			}
 		}
-		
-		if(player.pos.y - gamecanvas.height / 2 > 0 && player.pos.y - gamecanvas.height / 2 < 32 * 10){
-			gameviewport.y = player.pos.y - gamecanvas.height / 2;
-		}
-		
+			
 		/*if (ig.input.pressed('click') && this.puzzleOn == false){
 			this.puzzleOn = true//!this.puzzleOn;
 			//if (this.puzzleOn == true)
@@ -96,13 +102,13 @@ MyGame = ig.Game.extend({
 				ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 			//}
 		}*/
-		if (ig.input.pressed('click') && this.dialPuzzle == false)
+		/*if (ig.input.pressed('click') && this.dialPuzzle == false)
 		{
 			this.dialPuzzle = true;
 			ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
 			ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 			ig.game.spawnEntity(EntityDialPuzzle, 448, gameviewport.y);
-		}
+		}*/
 		/*
 		if(ig.input.pressed('click') && this.matchingOn == false){
 			this.matchingOn = true;

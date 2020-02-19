@@ -57,7 +57,7 @@ EntityTextBox = ig.Entity.extend({
 
         draw: function() {
             //Create a font
-            var font = new ig.Font( 'media/Market_Deco.png' );
+            var font = new ig.Font( 'media/04b03.font.png' );
 
             //Check to see if the current charater is less than the string length
             if(this.textCurrentChar <= this.textStringLength){

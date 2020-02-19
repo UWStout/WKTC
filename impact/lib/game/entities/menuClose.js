@@ -17,7 +17,7 @@ EntityMenuClose = ig.Entity.extend({
         this.addAnim( 'idle', 1, [0]);
 
         //ig.log("I spawned")
-        ig.game.spawnEntity(EntityHighlight, this.pos.x, this.pos.y);
+        //ig.game.spawnEntity(EntityHighlight, this.pos.x, this.pos.y);
 
     },
     update: function() {
