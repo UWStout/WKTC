@@ -21,6 +21,7 @@ ig.module(
 	'game.entities.Gingerbread',
 	'game.entities.SugarCookie',
 	'game.entities.SaltedCookie',
+	'game.entities.dialPuzzle',
 
 	'game.levels.main'
 )
@@ -36,6 +37,7 @@ MyGame = ig.Game.extend({
 
 	puzzleOn: true,
 	matchingOn: false,
+	dialPuzzle: false,
 	matchingArray: [0,0,1,1,2,2,3,3,4,4,5,5],
 	card1: null,
 	card2: null,
@@ -94,6 +96,14 @@ MyGame = ig.Game.extend({
 				ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 			//}
 		}*/
+		if (ig.input.pressed('click') && this.dialPuzzle == false)
+		{
+			this.dialPuzzle = true;
+			ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
+			ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
+			ig.game.spawnEntity(EntityDialPuzzle, 448, gameviewport.y);
+		}
+		/*
 		if(ig.input.pressed('click') && this.matchingOn == false){
 			this.matchingOn = true;
 			ig.game.spawnEntity(EntityMatchingBox, 448, gameviewport.y);
@@ -137,7 +147,7 @@ MyGame = ig.Game.extend({
 			this.closeWindow = true;
 			ig.log("Puzzle Solved")
 		}
-	
+		*/
 	},
 	
 	draw: function() {
