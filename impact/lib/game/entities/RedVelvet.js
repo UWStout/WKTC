@@ -15,6 +15,7 @@ ig.module(
         type: ig.Entity.TYPE.B,
         target: {},
         text: '',
+        collides: ig.Entity.COLLIDES.FIXED,
 
         zIndex: 0,
 

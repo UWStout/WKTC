@@ -27,12 +27,18 @@ ig.module(
         update: function(){
             x = (ig.input.mouse.x + ig.game.screen.x);
             y = (ig.input.mouse.y + ig.game.screen.y);
-            if(x >= this.pos.x && x <= this.pos.x + this.size.x && y >= this.pos.y
+            
+            if(ig.input.pressed('click') && ig.game.displayCredits == true){
+                ig.game.displayCredits = false;
+                ig.log("Kill credits");
+            }
+            else if(x >= this.pos.x && x <= this.pos.x + this.size.x && y >= this.pos.y
             && y <= this.pos.y + this.size.y) {
                 this.currentAnim = this.anims.highlight;
 
-                if(ig.input.pressed('click')){
-                    //Load the image or what ever it is
+                if(ig.input.pressed('click') && ig.game.displayCredits == false){
+                    ig.game.displayCredits = true;
+                    ig.log("diplay Credits")
                 }
             }
             else{

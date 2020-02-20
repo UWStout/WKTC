@@ -26,9 +26,12 @@ ig.module(
 	'game.entities.StartButton',
 	'game.entities.HowToPlay',
 	'game.entities.credits',
+	'game.entities.SuspectUI',
+	'game.entities.WeaponUI',
 
 	'game.levels.main',
-	'game.levels.MainMenu'
+	'game.levels.MainMenu',
+	'game.levels.End',
 )
 .defines(function(){
 
@@ -49,6 +52,14 @@ MyGame = ig.Game.extend({
 	matches: 0,
 	closeWindow: false,
 	cardTimer: new ig.Timer(),
+	evidence: 0,
+	susWinNum: 0,
+	wepWinNum: 0,
+	displayCredits: false,
+	credits: new ig.Image('media/Credits.png'),
+	displayHowTo: false,
+	howTo: new ig.Image('media/HowTo.png'),
+
 
 	
 	
@@ -68,12 +79,20 @@ MyGame = ig.Game.extend({
 		this.cardTimer.set(.25);
 		this.cardTimer.pause();
 
+		this.susWinNum = Math.floor(Math.random() * 4);
+		this.wepWinNum = Math.floor(Math.random() * 3);
+
+		ig.log(this.susWinNum);
+		ig.log(this.wepWinNum);
+		
+
 		
 	},
 	
 	update: function() {
 		// Update all entities and backgroundMaps
 		this.parent();
+
 		
 		// Add your own, additional update code here
 
@@ -93,7 +112,10 @@ MyGame = ig.Game.extend({
 				gameviewport.y = player.pos.y - gamecanvas.height / 2;
 			}
 		}
-			
+
+		
+		
+		//Drag puzzle code
 		/*if (ig.input.pressed('click') && this.puzzleOn == false){
 			this.puzzleOn = true//!this.puzzleOn;
 			//if (this.puzzleOn == true)
@@ -102,6 +124,7 @@ MyGame = ig.Game.extend({
 				ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
 			//}
 		}*/
+		//Dial Puzzle Code
 		/*if (ig.input.pressed('click') && this.dialPuzzle == false)
 		{
 			this.dialPuzzle = true;
@@ -110,6 +133,7 @@ MyGame = ig.Game.extend({
 			ig.game.spawnEntity(EntityDialPuzzle, 448, gameviewport.y);
 		}*/
 		/*
+		//Matching Puzzle code
 		if(ig.input.pressed('click') && this.matchingOn == false){
 			this.matchingOn = true;
 			ig.game.spawnEntity(EntityMatchingBox, 448, gameviewport.y);
@@ -157,14 +181,20 @@ MyGame = ig.Game.extend({
 	},
 	
 	draw: function() {
+
+		
 		// Draw all entities and backgroundMaps
 		this.parent();
-		
-		if (this.puzzleOn == true)
-		{
-			//this.windowBox.draw(96,64);
-			ig.log(this.windowBox.width);
+
+		if(this.displayCredits){
+			this.credits.draw(64,32);
 		}
+
+		if(this.displayHowTo){
+			this.howTo.draw(64,32);
+		}
+
+		
 	},
 
 	shuffle: function shuffle(array) {

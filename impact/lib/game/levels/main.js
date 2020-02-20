@@ -1,5 +1,5 @@
 ig.module( 'game.levels.main' )
-.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.RedVelvet','game.entities.CoffeeToffee','game.entities.Gingerbread','game.entities.SugarCookie','game.entities.SaltedCookie','game.entities.player' )
+.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.RedVelvet','game.entities.CoffeeToffee','game.entities.SugarCookie','game.entities.SaltedCookie','game.entities.player','game.entities.Gingerbread' )
 .defines(function(){
 LevelMain=/*JSON[*/{
 	"entities": [
@@ -87,17 +87,6 @@ LevelMain=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntityGingerbread",
-			"x": 188,
-			"y": 60,
-			"settings": {
-				"text": "Go find some evidence",
-				"target": {
-					"1": "player"
-				}
-			}
-		},
-		{
 			"type": "EntitySugarCookie",
 			"x": 148,
 			"y": 60,
@@ -125,6 +114,17 @@ LevelMain=/*JSON[*/{
 			"y": 132,
 			"settings": {
 				"name": "player"
+			}
+		},
+		{
+			"type": "EntityGingerbread",
+			"x": 188,
+			"y": 60,
+			"settings": {
+				"text": "Go find some evidence",
+				"target": {
+					"1": "player"
+				}
 			}
 		}
 	],
