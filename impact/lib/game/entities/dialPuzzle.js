@@ -12,8 +12,10 @@ ig.module(
         codeOne:  -1,
         codeTwo:  -1,
         codeThree:  -1,
-
+        ovenCode: 0,
         zIndex: 6,
+        numbersEntered: 0,
+        ovenChoice: 0,
         init:function(){
 
             this.addAnim('zeroTop',1,[0]);
@@ -23,25 +25,23 @@ ig.module(
             this.addAnim('sevenTop',1,[4]);
             this.currentAnim = this.anims.zeroTop;
             
-            /*
-            var ovenChoice = Math.floor((Math.random() * 4) + 1);
-            if (ovenChoice == 1)
+            if (this.ovenChoice == 1)
             {
-                ovenCode = 275;
+                this.ovenCode = 275;
             }
             else if (ovenChoice == 2)
             {
-                ovenCode = 300;
+                this.ovenCode = 300;
             }
             else if (OvenChoice == 3)
             {
-                ovenCode = 325;
+                this.ovenCode = 325;
             }
             else if (OvenChoice == 4)
             {
-                ovenCode = 350;
+                this.ovenCode = 350;
             }
-            */
+            
         },
         update: function()
         {
@@ -101,14 +101,17 @@ ig.module(
                         {
                             if (this.codeOne == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeOne = 0;
                             }
                             else if (this.codeTwo == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeTwo = 0;
                             }
                             else 
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeThree = 0;
                             }
                         }
@@ -116,14 +119,17 @@ ig.module(
                         {
                             if (this.codeOne == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeOne = 2;    
                             }
                             else if (this.codeTwo == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeTwo = 2;
                             }
                             else 
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeThree = 2;
                             }
                         }
@@ -131,14 +137,17 @@ ig.module(
                         {
                             if (this.codeOne == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeOne = 3;
                             }
                             else if (this.codeTwo == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeTwo = 3;
                             }
                             else 
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeThree = 3;
                             }
                         }
@@ -146,14 +155,17 @@ ig.module(
                         {
                             if (this.codeOne == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeOne = 5;
                             }
                             else if (this.codeTwo == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeTwo = 5;
                             }
                             else 
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeThree = 5;
                             }
                         }
@@ -161,20 +173,25 @@ ig.module(
                         {
                             if (this.codeOne == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeOne = 7;
                             }
                             else if (this.codeTwo == -1)
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeTwo = 7;
                             }
                             else 
                             {
+                                this.numbersEntered = this.numbersEntered + 1;
                                 this.codeThree = 7;
                             }
                         }
                 } // END OF Input Check
-    
-            if (this.codeOne == 2 && this.codeTwo == 7 && this.codeThree == 5)
+                
+                var userCode =  "" + this.codeOne + this.codeTwo + this.codeThree;
+            // OLD CODE CHECK, FALL BACK TO ME IF NEEDED if (this.codeOne == 2 && this.codeTwo == 7 && this.codeThree == 5)
+            if (userCode == this.ovenCode)
             {
                 ig.game.puzzleOn = false;
                 ig.log("I won the puzzle");
@@ -186,6 +203,14 @@ ig.module(
                 this.codeOne = -1;
                 this.codeTwo = -1;
                 this.codeThree = -1;
+                this.numbersEntered = 0;
+            }
+            if (this.numbersEntered == 3)
+            {
+                this.codeOne = -1;
+                this.codeTwo = -1;
+                this.codeThree = -1;
+                this.numbersEntered = 0;
             }
         }, // END OF UPDATE
         draw: function(){
