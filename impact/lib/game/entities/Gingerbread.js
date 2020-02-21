@@ -21,9 +21,13 @@ ig.module(
 
         zIndex: 4,
         display: false,
-        UIImage: new ig.Image('media/TestImage.png',448,320),
+        UIImage: new ig.Image('media/BasicBackground.png',448,320),
         susUI: null,
         wepUI: null,
+        susBtn: null,
+        wepBtn: null,
+        suspectFont: new ig.Font( 'media/04b03.font.png' ),
+        weaponFont: new ig.Font( 'media/04b03.font.png' ),
 
 
         init: function(x, y , settings){
@@ -59,10 +63,11 @@ ig.module(
                 }
             }
 
-            if(this.susUI != null && this.wepUI != null) {
-                if(this.susUI.susNumber == ig.game.susWinNum && this.wepUI.wepNumber == ig.game.wepWinNum){
-                    ig.game.loadLevel( LevelEnd);
-                }
+            if(ig.game.EndGame){
+                ig.game.endSusNum = this.susUI.susNumber;
+                ig.game.endWepNum = this.wepUI.wepNumber;
+                ig.game.EndGame = false;
+                ig.game.loadLevel( LevelEnd);
             }
 
 
@@ -77,6 +82,8 @@ ig.module(
                         ig.log("Working.jpg");
                         this.susUI = ig.game.spawnEntity(EntitySuspectUI, 128, 128);
                         this.wepUI = ig.game.spawnEntity(EntityWeaponUI, 192, 192);
+                        this.susBtn = ig.game.spawnEntity(EntitySuspectButton, 320, 128);
+                        this.wepBtn = ig.game.spawnEntity(EntityCancelButton, 320, 192);
                     }
                 }
             
@@ -84,16 +91,12 @@ ig.module(
                 //textBox.setText(this.text);
 
             }
-            else if(ig.input.pressed('action') && this.display == true){
-                ig.game.frozen = false;
+            else if(this.wepBtn != null && this.wepBtn.cancel){
                 this.display = false;
-                if(this.susUI != null){
-                    this.susUI.kill();
-                }
-                if(this.wepUI != null){
-                    this.wepUI.kill();
-                }
-                
+                this.susUI.kill();
+                this.wepUI.kill();
+                this.susBtn.kill();
+                this.wepBtn.kill();
             }
             
             
@@ -104,8 +107,13 @@ ig.module(
         draw: function(){
             this.parent();
 
+
+            
+
             if(this.display){
                 this.UIImage.draw(ig.game.screen.x + 64, ig.game.screen.y + 32);
+                this.suspectFont.draw("Pick Your Suspect: ", ig.game.screen.x + 96, ig.game.screen.y + 32 + 128, ig.Font.ALIGN.LEFT);
+                this.weaponFont.draw("Pick Your Weapon: ", ig.game.screen.x + 96, ig.game.screen.y + 32 + 224, ig.Font.ALIGN.LEFT);
             }
         }
     })

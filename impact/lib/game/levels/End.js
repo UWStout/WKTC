@@ -1,10 +1,15 @@
 ig.module( 'game.levels.End' )
-.requires( 'impact.image','game.entities.MainMenu' )
+.requires( 'impact.image','game.entities.MainMenu','game.entities.EndObject' )
 .defines(function(){
 LevelEnd=/*JSON[*/{
 	"entities": [
 		{
 			"type": "EntityMainMenu",
+			"x": -216,
+			"y": -188
+		},
+		{
+			"type": "EntityEndObject",
 			"x": 0,
 			"y": 0
 		}

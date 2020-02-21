@@ -14,6 +14,7 @@ ig.module(
         coordY: 0,
         size: {x: 64, y: 64},
         pos: {x: 32, y: 32},
+        
         changeSuspect: function(){
             this.susNumber++
             if(this.susNumber > 3){
@@ -45,11 +46,13 @@ ig.module(
             ig.log('I Spawned');
             ig.log(this.pos)
 
-            this.pos.x = 128;
+            this.pos.x = 240;
             this.pos.y = 128;
         },
         draw: function(){
             this.parent();
+
+            
             
         },
         update: function(){

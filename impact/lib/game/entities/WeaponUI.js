@@ -41,7 +41,7 @@ ig.module(
             ig.log('I Spawned');
             ig.log(this.pos)
 
-            this.pos.x = 128;
+            this.pos.x = 240;
             this.pos.y = 224;
         },
         draw: function(){

@@ -28,6 +28,10 @@ ig.module(
 	'game.entities.credits',
 	'game.entities.SuspectUI',
 	'game.entities.WeaponUI',
+	'game.entities.SuspectButton',
+	'game.entities.CancelButton',
+	'game.entities.Title',
+	'game.entities.EndObject',
 
 	'game.levels.main',
 	'game.levels.MainMenu',
@@ -59,6 +63,9 @@ MyGame = ig.Game.extend({
 	credits: new ig.Image('media/Credits.png'),
 	displayHowTo: false,
 	howTo: new ig.Image('media/HowTo.png'),
+	EndGame: false,
+	endSusNum: null,
+	endWepNum: null,
 
 
 	
@@ -222,6 +229,6 @@ MyGame = ig.Game.extend({
 
 // Start the Game with 60fps, a resolution of 320x240, scaled
 // up by a factor of 2
-ig.main( '#canvas', MyGame, 60, 576, 384, 1 );
+ig.main( '#canvas', MyGame, 60, 576, 384, 2);
 
 });
