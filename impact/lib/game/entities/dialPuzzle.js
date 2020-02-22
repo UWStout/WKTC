@@ -29,15 +29,15 @@ ig.module(
             {
                 this.ovenCode = 275;
             }
-            else if (ovenChoice == 2)
+            else if (this.ovenChoice == 2)
             {
                 this.ovenCode = 300;
             }
-            else if (OvenChoice == 3)
+            else if (this.ovenChoice == 3)
             {
                 this.ovenCode = 325;
             }
-            else if (OvenChoice == 4)
+            else if (this.ovenChoice == 4)
             {
                 this.ovenCode = 350;
             }

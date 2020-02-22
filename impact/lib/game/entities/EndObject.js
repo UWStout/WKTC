@@ -37,10 +37,7 @@ ig.module(
 
                 if(ig.input.pressed('click')){
 
-                    //Write a restart function in main.
-                    ig.game.susWinNum = Math.floor(Math.random() * 4);
-                    ig.game.wepWinNum = Math.floor(Math.random() * 3);
-                    ig.game.shuffle(ig.game.matchArray);
+                    ig.game.reset();
 
                     ig.game.loadLevel(LevelMainMenu);
                     this.kill();

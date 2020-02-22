@@ -1,40 +1,8 @@
 ig.module( 'game.levels.main' )
-.requires( 'impact.image','game.entities.Highlight','game.entities.trigger','game.entities.RedVelvet','game.entities.CoffeeToffee','game.entities.SugarCookie','game.entities.SaltedCookie','game.entities.player','game.entities.Gingerbread' )
+.requires( 'impact.image','game.entities.trigger','game.entities.RedVelvet','game.entities.CoffeeToffee','game.entities.SugarCookie','game.entities.SaltedCookie','game.entities.player','game.entities.MatchingObject','game.entities.Oven','game.entities.Cookbook','game.entities.Gingerbread' )
 .defines(function(){
 LevelMain=/*JSON[*/{
 	"entities": [
-		{
-			"type": "EntityHighlight",
-			"x": 216,
-			"y": 368,
-			"settings": {
-				"target": {
-					"1": "player"
-				}
-			}
-		},
-		{
-			"type": "EntityHighlight",
-			"x": 300,
-			"y": 56,
-			"settings": {
-				"target": {
-					"1": "player"
-				},
-				"text": "This is a Random Message"
-			}
-		},
-		{
-			"type": "EntityHighlight",
-			"x": 404,
-			"y": 340,
-			"settings": {
-				"target": {
-					"1": "player"
-				},
-				"text": "Nope"
-			}
-		},
 		{
 			"type": "EntityTrigger",
 			"x": 92,
@@ -114,6 +82,36 @@ LevelMain=/*JSON[*/{
 			"y": 132,
 			"settings": {
 				"name": "player"
+			}
+		},
+		{
+			"type": "EntityMatchingObject",
+			"x": 616,
+			"y": 396,
+			"settings": {
+				"target": {
+					"1": "player"
+				}
+			}
+		},
+		{
+			"type": "EntityOven",
+			"x": 648,
+			"y": 100,
+			"settings": {
+				"target": {
+					"1": "player"
+				}
+			}
+		},
+		{
+			"type": "EntityCookbook",
+			"x": 720,
+			"y": 100,
+			"settings": {
+				"target": {
+					"1": "player"
+				}
 			}
 		},
 		{

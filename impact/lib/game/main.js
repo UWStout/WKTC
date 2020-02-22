@@ -33,6 +33,10 @@ ig.module(
 	'game.entities.Title',
 	'game.entities.EndObject',
 	'game.entities.DragPuzzle',
+	'game.entities.MatchingObject',
+	'game.entities.wepEvidence',
+	'game.entities.susEvidence',
+	'game.entities.Cookbook',
 
 	'game.levels.main',
 	'game.levels.MainMenu',
@@ -44,13 +48,14 @@ MyGame = ig.Game.extend({
 	
 	// Load a font
 	font: new ig.Font( 'media/04b03.font.png' ),
-	windowBox:new ig.Image("media/TestImage.png"),
+	windowBox:new ig.Image("media/BasicBackground.png"),
 	frozen: false,
 	currentPuzzle: null,
-
 	puzzleOn: true,
 	matchingOn: false,
+	matchingSolved: false,
 	dialPuzzle: false,
+	dialSolved: false,
 	dragPuzzle: false,
 	matchingArray: [0,0,1,1,2,2,3,3,4,4,5,5],
 	card1: null,
@@ -81,6 +86,7 @@ MyGame = ig.Game.extend({
 		ig.input.bind(ig.KEY.D, 'right');
 		ig.input.bind(ig.KEY.E, 'action');
 		ig.input.bind(ig.KEY.MOUSE1, 'click');
+		ig.input.bind(ig.KEY.Q, 'test');
 
 		this.loadLevel( LevelMainMenu );
 
@@ -91,10 +97,6 @@ MyGame = ig.Game.extend({
 
 		this.susWinNum = Math.floor(Math.random() * 4);
 		this.wepWinNum = Math.floor(Math.random() * 3);
-
-		ig.log(this.susWinNum);
-		ig.log(this.wepWinNum);
-		
 
 		
 	},
@@ -113,7 +115,7 @@ MyGame = ig.Game.extend({
 		var player = this.getEntitiesByType( EntityPlayer )[0];
 
 		
-		if(player != null){
+		if(player != null) {
 			if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 32 * 16) {
 				gameviewport.x = player.pos.x - gamecanvas.width / 2;
 			}
@@ -126,7 +128,7 @@ MyGame = ig.Game.extend({
 		
 		
 		//Drag puzzle code
-		if (ig.input.pressed('click') && this.dragPuzzle == false){
+		/*if (ig.input.pressed('click') && this.dragPuzzle == false){
 			this.dragPuzzle = true//!this.puzzleOn;
 			if (this.puzzleOn == true)
 			{
@@ -141,7 +143,7 @@ MyGame = ig.Game.extend({
 					piece.coordY = gameviewPort.y + 200;
 				}
 			}
-		}
+		}*/
 
 		//Dial Puzzle Code
 		/*if (ig.input.pressed('click') && this.dialPuzzle == false)
@@ -155,8 +157,7 @@ MyGame = ig.Game.extend({
 		}*/
 		
 		//Matching Puzzle code
-		/*
-		if(ig.input.pressed('click') && this.matchingOn == false){
+		/*if(ig.input.pressed('test') && this.matchingOn == false){
 			this.matchingOn = true;
 			ig.game.spawnEntity(EntityMatchingBox, 448, gameviewport.y);
 			for(var i = 0; i < 12; i++){
@@ -198,8 +199,7 @@ MyGame = ig.Game.extend({
 			this.matchingOn = false;
 			this.closeWindow = true;
 			ig.log("Puzzle Solved")
-		}
-		*/
+		}*/
 	},
 	
 	draw: function() {
@@ -219,7 +219,7 @@ MyGame = ig.Game.extend({
 		
 	},
 
-	shuffle: function shuffle(array) {
+	shuffle: function(array) {
 		var currentIndex = array.length, temporaryValue, randomIndex;
 	  
 		// While there remain elements to shuffle...
@@ -237,7 +237,45 @@ MyGame = ig.Game.extend({
 	  
 		this.oChoice = Math.floor((Math.random() * 4) + 1);
 		return array;
-	  }
+	},
+
+	reset: function(){
+		this.frozen = false;
+		this.currentPuzzle = null;
+		this.puzzleOn= true;
+		this.matchingOn= false;
+		this.matchingSolved = false;
+		this.dialPuzzle= false;
+		this.dialSolved = false;
+		this.dragPuzzle= false;
+		this.matchingArray= [0,0,1,1,2,2,3,3,4,4,5,5];
+		this.card1= null;
+		this.card2= null;
+		this.matches= 0;
+		this.closeWindow= false;
+		this.cardTimer = new ig.Timer();
+		this.evidence= 0;
+		this.susWinNum= 0;
+		this.wepWinNum= 0;
+		this.displayCredits= false;
+		this.credits= new ig.Image('media/Credits.png');
+		this.displayHowTo= false;
+		this.howTo= new ig.Image('media/HowTo.png');
+		this.EndGame= false;
+		this.endSusNum= null;
+		this.endWepNum= null;
+		this.oChoice = 0
+
+		this.matchingArray = this.shuffle(this.matchingArray);
+
+		this.cardTimer.set(.25);
+		this.cardTimer.pause();
+
+		this.susWinNum = Math.floor(Math.random() * 4);
+		this.wepWinNum = Math.floor(Math.random() * 3);
+
+
+	}
 		
 });
 

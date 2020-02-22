@@ -29,6 +29,11 @@ EntityPlayer = ig.Entity.extend({
         this.currentAnim = this.anims.idle
     },
 
+    ready: function(){
+        ig.game.spawnEntity(EntityWepEvidence, 0,0);
+        ig.game.spawnEntity(EntitySusEvidence, 0,0);
+    },
+
     update: function(){
 
         this.parent();
