@@ -46,6 +46,20 @@ ig.module(
         },
         draw: function(){
             this.parent();
+
+            var wepSelect =  new ig.Font( 'media/04b03.font.png' )
+
+            switch(this.wepNumber){
+                case 0:
+                    wepSelect.draw("Glass of Milk", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    break;
+                case 1:
+                    wepSelect.draw("Licorice Rope", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    break;
+                case 2:
+                    wepSelect.draw("Dino Grabber", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    break;
+            }
             
         },
         update: function(){
