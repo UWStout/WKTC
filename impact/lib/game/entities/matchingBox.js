@@ -7,7 +7,7 @@ ig.module(
 .defines(function(){
    
     EntityMatchingBox = ig.Entity.extend({
-        animSheet: new ig.AnimationSheet('media/TestImage.png',448,320),
+        animSheet: new ig.AnimationSheet('media/BasicBackground.png',448,320),
         zIndex: 4,
         pos: {x: 32, y: 32},
         init:function(){

@@ -28,6 +28,11 @@ ig.module(
 	'game.entities.credits',
 	'game.entities.SuspectUI',
 	'game.entities.WeaponUI',
+	'game.entities.SuspectButton',
+	'game.entities.CancelButton',
+	'game.entities.Title',
+	'game.entities.EndObject',
+	'game.entities.DragPuzzle',
 
 	'game.levels.main',
 	'game.levels.MainMenu',
@@ -46,6 +51,7 @@ MyGame = ig.Game.extend({
 	puzzleOn: true,
 	matchingOn: false,
 	dialPuzzle: false,
+	dragPuzzle: false,
 	matchingArray: [0,0,1,1,2,2,3,3,4,4,5,5],
 	card1: null,
 	card2: null,
@@ -59,6 +65,10 @@ MyGame = ig.Game.extend({
 	credits: new ig.Image('media/Credits.png'),
 	displayHowTo: false,
 	howTo: new ig.Image('media/HowTo.png'),
+	EndGame: false,
+	endSusNum: null,
+	endWepNum: null,
+	oChoice: 0,
 
 
 	
@@ -116,24 +126,36 @@ MyGame = ig.Game.extend({
 		
 		
 		//Drag puzzle code
-		/*if (ig.input.pressed('click') && this.puzzleOn == false){
-			this.puzzleOn = true//!this.puzzleOn;
-			//if (this.puzzleOn == true)
-			//{
+		if (ig.input.pressed('click') && this.dragPuzzle == false){
+			this.dragPuzzle = true//!this.puzzleOn;
+			if (this.puzzleOn == true)
+			{
 				ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
 				ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
-			//}
-		}*/
+				
+				for (var i = 0; i < 4; i++)
+				{
+					var piece = ig.game.spawnEntity(EntityDragPuzzle, 448, gameviewPort.y);
+					piece.arrayIndex = i;
+					piece.coordX = (i * piece.placeOffset);
+					piece.coordY = gameviewPort.y + 200;
+				}
+			}
+		}
+
 		//Dial Puzzle Code
 		/*if (ig.input.pressed('click') && this.dialPuzzle == false)
 		{
 			this.dialPuzzle = true;
 			ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
 			ig.game.spawnEntity(EntityMenuClose, gameviewport.x + 200, gameviewport.y);
-			ig.game.spawnEntity(EntityDialPuzzle, 448, gameviewport.y);
+			
+			var temp = ig.game.spawnEntity(EntityDialPuzzle, 448, gameviewport.y);
+			temp.ovenChoice = this.oChoice;
 		}*/
-		/*
+		
 		//Matching Puzzle code
+		/*
 		if(ig.input.pressed('click') && this.matchingOn == false){
 			this.matchingOn = true;
 			ig.game.spawnEntity(EntityMatchingBox, 448, gameviewport.y);
@@ -213,6 +235,7 @@ MyGame = ig.Game.extend({
 		  array[randomIndex] = temporaryValue;
 		}
 	  
+		this.oChoice = Math.floor((Math.random() * 4) + 1);
 		return array;
 	  }
 		
@@ -222,6 +245,6 @@ MyGame = ig.Game.extend({
 
 // Start the Game with 60fps, a resolution of 320x240, scaled
 // up by a factor of 2
-ig.main( '#canvas', MyGame, 60, 576, 384, 1 );
+ig.main( '#canvas', MyGame, 60, 576, 384, 2);
 
 });

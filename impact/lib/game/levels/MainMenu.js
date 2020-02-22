@@ -1,27 +1,32 @@
 ig.module( 'game.levels.MainMenu' )
-.requires( 'impact.image','game.entities.MainMenu','game.entities.StartButton','game.entities.HowToPlay','game.entities.credits' )
+.requires( 'impact.image','game.entities.MainMenu','game.entities.Title','game.entities.StartButton','game.entities.HowToPlay','game.entities.credits' )
 .defines(function(){
 LevelMainMenu=/*JSON[*/{
 	"entities": [
 		{
 			"type": "EntityMainMenu",
-			"x": 0,
-			"y": 0
+			"x": 4,
+			"y": -20
+		},
+		{
+			"type": "EntityTitle",
+			"x": 60,
+			"y": 24
 		},
 		{
 			"type": "EntityStartButton",
-			"x": -3664,
-			"y": 192
+			"x": 160,
+			"y": 128
 		},
 		{
 			"type": "EntityHowToPlay",
-			"x": -3660,
-			"y": 316
+			"x": 160,
+			"y": 192
 		},
 		{
 			"type": "EntityCredits",
-			"x": -3656,
-			"y": 452
+			"x": 160,
+			"y": 256
 		}
 	],
 	"layer": [
