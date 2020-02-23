@@ -116,11 +116,11 @@ MyGame = ig.Game.extend({
 
 		
 		if(player != null) {
-			if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 32 * 16) {
+			if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 32 * 14) {
 				gameviewport.x = player.pos.x - gamecanvas.width / 2;
 			}
 			
-			if(player.pos.y - gamecanvas.height / 2 > 0 && player.pos.y - gamecanvas.height / 2 < 32 * 10){
+			if(player.pos.y - gamecanvas.height / 2 > 0 && player.pos.y - gamecanvas.height / 2 < 32 * 8){
 				gameviewport.y = player.pos.y - gamecanvas.height / 2;
 			}
 		}
@@ -146,7 +146,8 @@ MyGame = ig.Game.extend({
 		}*/
 
 		//Dial Puzzle Code
-		/*if (ig.input.pressed('click') && this.dialPuzzle == false)
+		/*
+		if (ig.input.pressed('action') && this.dialPuzzle == false)
 		{
 			this.dialPuzzle = true;
 			ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
@@ -154,10 +155,12 @@ MyGame = ig.Game.extend({
 			
 			var temp = ig.game.spawnEntity(EntityDialPuzzle, 448, gameviewport.y);
 			temp.ovenChoice = this.oChoice;
-		}*/
+		}
+		*/
 		
 		//Matching Puzzle code
-		/*if(ig.input.pressed('test') && this.matchingOn == false){
+		/*
+		if(ig.input.pressed('test') && this.matchingOn == false){
 			this.matchingOn = true;
 			ig.game.spawnEntity(EntityMatchingBox, 448, gameviewport.y);
 			for(var i = 0; i < 12; i++){
@@ -199,7 +202,8 @@ MyGame = ig.Game.extend({
 			this.matchingOn = false;
 			this.closeWindow = true;
 			ig.log("Puzzle Solved")
-		}*/
+		}
+		*/
 	},
 	
 	draw: function() {

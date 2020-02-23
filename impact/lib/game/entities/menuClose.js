@@ -28,11 +28,17 @@ EntityMenuClose = ig.Entity.extend({
                 var puzzleBox = ig.game.currentPuzzle;
                 ig.game.puzzleOn = false;
                 ig.game.matchingOn = false;
+                ig.game.dialPuzzle = false;
                 ig.game.frozen = false;
                 //ig.game.puzzleBox = !ig.game.puzzleBox;
                 var cards = ig.game.getEntitiesByType(EntityMatchingCard)
                 for(var i = 0; i < cards.length; i++){
                     cards[i].kill();
+                }
+                var dial = ig.game.getEntitiesByType(EntityDialPuzzle);
+                for (var j = 0; j < dial.length; j++)
+                {
+                    dial[j].kill();
                 }
                 puzzleBox.kill();
                 this.kill();
