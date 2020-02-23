@@ -52,8 +52,8 @@ ig.module(
             if(this.showText){
                 var font = new ig.Font( 'media/04b03.font.png' );
 
-                if(ig.game.matchingSolved){
-                    switch(ig.game.wepWinNum) {
+                if(ig.game.dialSolved){
+                    switch(ig.game.susWinNum) {
                         case 0:
                             font.draw("Frosting Trail", 416, 64, ig.Font.ALIGN.LEFT)
                             break;

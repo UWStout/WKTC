@@ -23,6 +23,10 @@ ig.module(
 
             //Set the starting animation to the idle animation
             this.currentAnim = this.anims.idle;
+
+            //Set the initial position
+            this.pos.x = 224;
+            this.pos.y = 192;
         },
 
         //Called every frame

@@ -8,9 +8,6 @@ ig.module(
 
 	//Entities
 	'game.entities.player',
-	'game.entities.testTrigger',
-	'game.entities.trigger',
-	'game.entities.Highlight',
 	'game.entities.textBox',
 	'game.entities.menuClose',
 	'game.entities.puzzleBox',
