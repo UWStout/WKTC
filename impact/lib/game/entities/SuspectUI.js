@@ -52,7 +52,24 @@ ig.module(
         draw: function(){
             this.parent();
 
-            
+            //Create a font base off the suspect and weapon selected
+            var susSelect =  new ig.Font( 'media/04b03.font.png' )
+            var wepSelect =  new ig.Font( 'media/04b03.font.png' )
+
+            switch(this.susNumber){
+                case 0:
+                    susSelect.draw("Sugar Cookie", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    break;
+                case 1:
+                    susSelect.draw("Salted Caramel", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    break;
+                case 2:
+                    susSelect.draw("Coffee Toffee", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    break;
+                case 3:
+                    susSelect.draw("Red Velvet", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    break;
+            }
             
         },
         update: function(){

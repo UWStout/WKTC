@@ -25,7 +25,7 @@ ig.module(
         susUI: null,
         wepUI: null,
         susBtn: null,
-        wepBtn: null,
+        cancelBtn: null,
         suspectFont: new ig.Font( 'media/04b03.font.png' ),
         weaponFont: new ig.Font( 'media/04b03.font.png' ),
 
@@ -67,7 +67,7 @@ ig.module(
                 ig.game.endSusNum = this.susUI.susNumber;
                 ig.game.endWepNum = this.wepUI.wepNumber;
                 ig.game.EndGame = false;
-                ig.game.loadLevel( LevelEnd);
+                ig.game.loadLevel(LevelEnd);
             }
 
 
@@ -83,7 +83,7 @@ ig.module(
                         this.susUI = ig.game.spawnEntity(EntitySuspectUI, 128, 128);
                         this.wepUI = ig.game.spawnEntity(EntityWeaponUI, 192, 192);
                         this.susBtn = ig.game.spawnEntity(EntitySuspectButton, 320, 128);
-                        this.wepBtn = ig.game.spawnEntity(EntityCancelButton, 320, 192);
+                        this.cancelBtn = ig.game.spawnEntity(EntityCancelButton, 320, 192);
                     }
                 }
             
@@ -91,12 +91,12 @@ ig.module(
                 //textBox.setText(this.text);
 
             }
-            else if(this.wepBtn != null && this.wepBtn.cancel){
+            else if(this.cancelBtn != null && this.cancelBtn.cancel){
                 this.display = false;
                 this.susUI.kill();
                 this.wepUI.kill();
                 this.susBtn.kill();
-                this.wepBtn.kill();
+                this.cancelBtn.kill();
             }
             
             
@@ -111,6 +111,7 @@ ig.module(
             
 
             if(this.display){
+                //Display the images and fonts for the UI menu
                 this.UIImage.draw(ig.game.screen.x + 64, ig.game.screen.y + 32);
                 this.suspectFont.draw("Pick Your Suspect: ", ig.game.screen.x + 96, ig.game.screen.y + 32 + 128, ig.Font.ALIGN.LEFT);
                 this.weaponFont.draw("Pick Your Weapon: ", ig.game.screen.x + 96, ig.game.screen.y + 32 + 224, ig.Font.ALIGN.LEFT);
