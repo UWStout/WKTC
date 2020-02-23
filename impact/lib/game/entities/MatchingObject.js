@@ -10,9 +10,9 @@ ig.module(
 
     EntityMatchingObject = ig.Entity.extend({
         //Ths size of the hit box
-        size: {x: 32, y:32},
+        size: {x: 53, y:82},
         //Animation Sheet
-        animSheet: new ig.AnimationSheet('media /Highlight.png',32,32),
+        animSheet: new ig.AnimationSheet('media /Compute_Spritesheet.png',53,82),
         //List of other object that can interacte with this one.  Defined in the level editor.
         target: {},
         //Define the collision protocol
@@ -27,8 +27,8 @@ ig.module(
             this.parent(x,y,settings);
 
             //Define the animations
-            this.addAnim('idle',1,[0]);
-            this.addAnim('highlight', 1, [1]);
+            this.addAnim('idle',1,[1]);
+            this.addAnim('highlight', 1, [0]);
 
             //Change the current animation to idle
             this.currentAnim = this.anims.idle;
@@ -52,8 +52,8 @@ ig.module(
                 if(ent && ent instanceof EntityPlayer) {
                     //Get the distance between the object and the player
                     var dist = this.distanceTo(ent);
-                    //If the distance is less than 50 and the puzzle has not been solved
-                    if(dist < 50 && ig.game.matchingSolved == false) {
+                    //If the distance is less than 75 and the puzzle has not been solved
+                    if(dist < 75 && ig.game.matchingSolved == false) {
                         if(this.currentAnim == this.anims.idle){
                             this.currentAnim = this.anims.highlight;
                         }

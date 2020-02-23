@@ -10,9 +10,9 @@ ig.module(
 
     EntityOven = ig.Entity.extend({
         //Size of the hit box/object
-        size: {x: 32, y:32},
+        size: {x: 135, y:260},
         //Animation sheet
-        animSheet: new ig.AnimationSheet('media /Highlight.png',32,32),
+        animSheet: new ig.AnimationSheet('media /Oven.png',135,260),
         //List of objects that this object can interact with
         target: {},
         //Defining the collision protocol
@@ -27,8 +27,8 @@ ig.module(
             this.parent(x,y,settings);
 
             //Defining the animations
-            this.addAnim('idle',1,[0]);
-            this.addAnim('highlight', 1, [1]);
+            this.addAnim('idle',1,[1]);
+            this.addAnim('highlight', 1, [0]);
 
             //Change the current animation to idle
             this.currentAnim = this.anims.idle;
@@ -52,8 +52,8 @@ ig.module(
                 if(ent && ent instanceof EntityPlayer){
                     //get the distance between the player and the object
                     var dist = this.distanceTo(ent);
-                    //If the distance is less than 50 and the puzzle is not solved
-                    if(dist < 50 && ig.game.dialSolved == false) {
+                    //If the distance is less than 150 and the puzzle is not solved
+                    if(dist < 150 && ig.game.dialSolved == false) {
                         if(this.currentAnim == this.anims.idle){
                             this.currentAnim = this.anims.highlight;
                         }

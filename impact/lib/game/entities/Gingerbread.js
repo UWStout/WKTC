@@ -127,6 +127,8 @@ ig.module(
 
             this.parent();
         },
+
+        //Draw the object to the screen. Called Every Frame
         draw: function(){
             this.parent();
 

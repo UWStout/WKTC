@@ -37,6 +37,9 @@ EntityPlayer = ig.Entity.extend({
         //Spawn the evidence UI
         ig.game.spawnEntity(EntityWepEvidence, 0,0);
         ig.game.spawnEntity(EntitySusEvidence, 0,0);
+
+		ig.game.screen.x = this.pos.x - gamecanvas.width / 2;
+		ig.game.screen.y = this.pos.y - gamecanvas.height / 2;
     },
 
     //Called Every Frame

@@ -113,11 +113,11 @@ MyGame = ig.Game.extend({
 
 		
 		if(player != null) {
-			if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 32 * 14) {
+			if(player.pos.x - gamecanvas.width / 2 > 0 && player.pos.x - gamecanvas.width / 2 < 130) {
 				gameviewport.x = player.pos.x - gamecanvas.width / 2;
 			}
 			
-			if(player.pos.y - gamecanvas.height / 2 > 0 && player.pos.y - gamecanvas.height / 2 < 32 * 8){
+			if(player.pos.y - gamecanvas.height / 2 > 0 && player.pos.y - gamecanvas.height / 2 < 516){
 				gameviewport.y = player.pos.y - gamecanvas.height / 2;
 			}
 		}
