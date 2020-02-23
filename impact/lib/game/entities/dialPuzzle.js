@@ -3,6 +3,7 @@ ig.module(
 )
 .requires(
     'impact.entity',
+    'impact.font',
 )
 .defines(function(){
     EntityDialPuzzle = ig.Entity.extend({
@@ -16,6 +17,8 @@ ig.module(
         zIndex: 6,
         numbersEntered: 0,
         ovenChoice: 0,
+        size: {x: 320, y: 256},
+
         init:function(){
 
             this.addAnim('zeroTop',1,[0]);
@@ -25,6 +28,11 @@ ig.module(
             this.addAnim('sevenTop',1,[4]);
             this.currentAnim = this.anims.zeroTop;
             
+            
+            
+        },
+        update: function()
+        {
             if (this.ovenChoice == 1)
             {
                 this.ovenCode = 275;
@@ -41,11 +49,8 @@ ig.module(
             {
                 this.ovenCode = 350;
             }
-            
-        },
-        update: function()
-        {
-            
+
+            ig.log("Code is: " + this.ovenCode + " Choice was: " + this.ovenChoice);
                 // Start of go backwards
                 if(ig.input.pressed('click') && ig.input.mouse.x > 128 && ig.input.mouse.x < 224 && ig.input.mouse.y > 150 && ig.input.mouse.y < 235)
                 {
@@ -207,6 +212,7 @@ ig.module(
             }
             if (this.numbersEntered == 3)
             {
+                ig.log("I have reset the puzzle");
                 this.codeOne = -1;
                 this.codeTwo = -1;
                 this.codeThree = -1;
@@ -215,6 +221,8 @@ ig.module(
         }, // END OF UPDATE
         draw: function(){
             this.parent();
+            var ovenFont = new ig.Font('media/04b03.font.png');
+            ovenFont.draw("Current Code: " + this.codeOne + this.codeTwo + this.codeThree, this.size.x / 2 + 80, this.size.y / 4);
             var offsetX = ig.game.screen.x;
             var offsetY = ig.game.screen.y;
             this.pos.x = offsetX + 128;
