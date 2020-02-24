@@ -203,6 +203,7 @@ ig.module(
             {
                 ig.game.puzzleOn = false;
                 ig.game.dialSolved = true;
+                ig.game.frozen = false;
                 //ig.log("I won the puzzle");
                 var ent = ig.game.getEntitiesByType(EntityPuzzleBox)[0];
                 var clo = ig.game.getEntitiesByType(EntityMenuClose)[0];
