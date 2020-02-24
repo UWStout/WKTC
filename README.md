@@ -1,4 +1,6 @@
 # WKTC
+![](Banner.png)
+
 WhoKilledTheCookieFromTheCookieJar
 
 Install the repository.  Start a webserver and go to localhost/GDD325/WKTC/impact/ to run the game.
