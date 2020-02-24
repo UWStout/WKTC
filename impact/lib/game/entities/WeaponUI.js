@@ -14,6 +14,7 @@ ig.module(
         coordY: 0,
         size: {x: 64, y: 64},
         pos: {x: 32, y: 32},
+        // Cycle through the weapons array for choosing which weapon was the murder weapon
         changeSuspect: function(){
             this.wepNumber++
             if(this.wepNumber > 2){
@@ -32,6 +33,7 @@ ig.module(
             }
         },
         init:function(){
+            // Establish entity animations
             this.addAnim( 'wep1', 1, [0]);
             this.addAnim( 'wep2', 1, [1]);
             this.addAnim( 'wep3', 1, [2]);
@@ -48,7 +50,7 @@ ig.module(
             this.parent();
 
             var wepSelect =  new ig.Font( 'media/04b03.font.png' )
-
+            // Based on which weapon, update the text for confirming the murder weapon
             switch(this.wepNumber){
                 case 0:
                     wepSelect.draw("Glass of Milk", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
@@ -65,7 +67,7 @@ ig.module(
         update: function(){
             x = (ig.input.mouse.x + ig.game.screen.x);
             y = (ig.input.mouse.y + ig.game.screen.y);
-
+            // If you click on the entity, cycle through the array
             if(ig.input.pressed('click') && x >= this.pos.x && x <= this.pos.x + this.size.x && y >= this.pos.y && y <= this.pos.y + this.size.y){
                 this.changeSuspect();
             }

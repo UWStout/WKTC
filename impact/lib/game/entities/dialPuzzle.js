@@ -20,6 +20,7 @@ ig.module(
         size: {x: 320, y: 256},
         textTimer: new ig.Timer(),
 
+        // Initialize the animations for the puzzle
         init:function(){
 
             this.addAnim('zeroTop',1,[0]);

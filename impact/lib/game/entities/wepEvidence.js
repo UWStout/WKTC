@@ -14,6 +14,7 @@ ig.module(
         pos: {x:448, y: 32},
 
         init: function(x, y , settings){
+            // Draw the hud as well as establish the animaions
             this.parent(x,y,settings);
             this.addAnim('idle',1,[0]);
             this.addAnim('found',1,[1]);
@@ -27,9 +28,10 @@ ig.module(
                 this.currentAnim = this.anims.found;
             }
 
+            // Keep track of the mouse
             x = (ig.input.mouse.x + ig.game.screen.x);
             y = (ig.input.mouse.y + ig.game.screen.y);
-            
+            // If the mouse overlaps the box for the evidence, display the text
             if(x >= this.pos.x && x <= this.pos.x + this.size.x && y >= this.pos.y
             && y <= this.pos.y + this.size.y) {
                 this.showText = true;
@@ -44,7 +46,7 @@ ig.module(
 
         draw: function(){
             this.parent();
-
+            // Offset for the hud
             var offsetX = ig.game.screen.x;
             var offsetY = ig.game.screen.y;
             this.pos.x = offsetX + 512;
@@ -52,7 +54,7 @@ ig.module(
 
             if(this.showText){
                 var font = new ig.Font( 'media/04b03.font.png' );
-
+                // Based on the evidence as well as relying on the puzzle completed, update the evidence text
                 if(ig.game.matchingSolved){
                     switch(ig.game.wepWinNum) {
                         case 0:

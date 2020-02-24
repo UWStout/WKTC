@@ -1,3 +1,4 @@
+// Entity for the title screen
 ig.module(
     'game.entities.Title'
 )

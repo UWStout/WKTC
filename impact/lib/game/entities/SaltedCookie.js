@@ -18,7 +18,7 @@ ig.module(
         collides: ig.Entity.COLLIDES.FIXED,
 
         zIndex: 0,
-
+        // Setting up all the animations
         init: function(x, y , settings){
             this.parent(x,y,settings);
             this.addAnim('idle',.5,[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
@@ -28,9 +28,10 @@ ig.module(
         },
 
         update: function(){
-
+            // Target the player, and constantly check if they are within 50 pixels away
             for(var t in this.target){
                 var ent = ig.game.getEntityByName(this.target[t])
+                // If they are within said distance, give Salted Cookie a highlight around themselves
                 if(ent && ent instanceof EntityPlayer){
                     var dist = this.distanceTo(ent);
                     if(dist < 50) {
@@ -38,6 +39,7 @@ ig.module(
                             this.currentAnim = this.anims.highlight;
                         }
                     }
+                    // Otherwise, unhighlight them
                     else{
                         if(this.currentAnim == this.anims.highlight){
                             this.currentAnim = this.anims.idle;
@@ -48,7 +50,7 @@ ig.module(
             }
 
 
-            
+            // If the player is close enough and presses the interact button, pause the game and play their text
             if(ig.input.pressed('action') && this.currentAnim == this.anims.highlight && ig.game.frozen == false){
 
                 for(var t in this.target){
@@ -57,7 +59,7 @@ ig.module(
                         ig.log(ig.game.frozen);
                     }
                 }
-            
+                // Spawn a textbox to place/display their text
                 var textBox = ig.game.spawnEntity(EntityTextBox, 32, ig.system.height - 32);
                 textBox.setText(this.text);
 

@@ -1,3 +1,4 @@
+// DEFUNCT CLASS, NO LONGER USED WITHIN OUR GAME
 ig.module(
     'game.entities.Puzzle'
 )
