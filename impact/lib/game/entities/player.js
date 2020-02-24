@@ -38,6 +38,7 @@ EntityPlayer = ig.Entity.extend({
         ig.game.spawnEntity(EntityWepEvidence, 0,0);
         ig.game.spawnEntity(EntitySusEvidence, 0,0);
 
+        var gamecanvas = ig.system;
 		ig.game.screen.x = this.pos.x - gamecanvas.width / 2;
 		ig.game.screen.y = this.pos.y - gamecanvas.height / 2;
     },

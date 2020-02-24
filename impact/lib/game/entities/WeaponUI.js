@@ -13,7 +13,7 @@ ig.module(
         coordX: 0,
         coordY: 0,
         size: {x: 64, y: 64},
-        pos: {x: 32, y: 32},
+        pos: {x: 240, y: 224},
         // Cycle through the weapons array for choosing which weapon was the murder weapon
         changeSuspect: function(){
             this.wepNumber++
@@ -43,8 +43,8 @@ ig.module(
             ig.log('I Spawned');
             ig.log(this.pos)
 
-            this.pos.x = 240;
-            this.pos.y = 224;
+            this.pos.x = this.pos.x + ig.game.screen.x;
+            this.pos.y = this.pos.y + ig.game.screen.y;
         },
         draw: function(){
             this.parent();
@@ -53,13 +53,13 @@ ig.module(
             // Based on which weapon, update the text for confirming the murder weapon
             switch(this.wepNumber){
                 case 0:
-                    wepSelect.draw("Glass of Milk", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    wepSelect.draw("Glass of Milk", 246 , 292, ig.Font.ALIGN.LEFT)
                     break;
                 case 1:
-                    wepSelect.draw("Licorice Rope", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    wepSelect.draw("Licorice Rope", 246 , 292, ig.Font.ALIGN.LEFT)
                     break;
                 case 2:
-                    wepSelect.draw("Dino Grabber", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    wepSelect.draw("Dino Grabber", 246 , 292, ig.Font.ALIGN.LEFT)
                     break;
             }
             

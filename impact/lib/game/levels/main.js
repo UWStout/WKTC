@@ -8,7 +8,7 @@ LevelMain=/*JSON[*/{
 			"x": 576,
 			"y": 460,
 			"settings": {
-				"text": "It wasn't me",
+				"text": "Hello there Detective, my name is Red Velvet.  I can't say I saw anything strange.  Maybe that big Coffee Cookie might know more.",
 				"target": {
 					"1": "player"
 				}
@@ -19,7 +19,7 @@ LevelMain=/*JSON[*/{
 			"x": 552,
 			"y": 344,
 			"settings": {
-				"text": "I might have been me",
+				"text": "Hi, my name is Coffee Toffee. It wasn't me. I was too busy at the gym.",
 				"target": {
 					"1": "player"
 				}
@@ -41,7 +41,7 @@ LevelMain=/*JSON[*/{
 			"x": 600,
 			"y": 584,
 			"settings": {
-				"text": "*************",
+				"text": "Hello good sir! My name is salted caramel and it most certainly was not me. I was too busy drinking my tea.",
 				"target": {
 					"1": "player"
 				}
@@ -87,8 +87,8 @@ LevelMain=/*JSON[*/{
 		},
 		{
 			"type": "EntityGingerbread",
-			"x": 464,
-			"y": 720,
+			"x": 460,
+			"y": 732,
 			"settings": {
 				"text": "Go find some evidence",
 				"target": {

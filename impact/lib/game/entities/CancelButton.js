@@ -9,7 +9,7 @@ ig.module(
     //Class Definition
     EntityCancelButton = ig.Entity.extend({
         //Layer the object is drawn on
-        zIndex: 5,
+        zIndex: 4,
         //Animation Sheet
         animSheet: new ig.AnimationSheet('media/MoreButtons.png', 128, 64),
         //Defining the hitbox
@@ -26,6 +26,9 @@ ig.module(
             //Set the animation to the idle Animation
             this.currentAnim = this.anims.idle
 
+            this.pos.x = this.pos.x + ig.game.screen.x;
+            this.pos.y = this.pos.y + ig.game.screen.y;
+
         },
         draw: function(){
             this.parent();
@@ -33,7 +36,9 @@ ig.module(
             //Create a font object
             var font = new ig.Font( 'media/04b03.font.png' );
             //Draw the font to the screen
-            font.draw("Cancel", this.pos.x + 64, this.pos.y + 32, ig.Font.ALIGN.CENTER);
+            font.draw("Cancel", 320 + 64, 224 + 32, ig.Font.ALIGN.CENTER);
+
+            
 
             
         },

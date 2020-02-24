@@ -104,10 +104,10 @@ ig.module(
                         //Display the UI
                         this.display = true;
                         //Spawn the Button to go along with the UI
-                        this.susUI = ig.game.spawnEntity(EntitySuspectUI, 128, 128);
-                        this.wepUI = ig.game.spawnEntity(EntityWeaponUI, 192, 192);
-                        this.susBtn = ig.game.spawnEntity(EntitySuspectButton, 320, 128);
-                        this.cancelBtn = ig.game.spawnEntity(EntityCancelButton, 320, 192);
+                        this.susUI = ig.game.spawnEntity(EntitySuspectUI, ig.game.screen.x, ig.game.screen.y);
+                        this.wepUI = ig.game.spawnEntity(EntityWeaponUI, ig.game.screen.x, ig.game.screen.y);
+                        this.susBtn = ig.game.spawnEntity(EntitySuspectButton, ig.game.screen.x, ig.game.screen.y);
+                        this.cancelBtn = ig.game.spawnEntity(EntityCancelButton, ig.game.screen.x, ig.game.screen.y);
                     }
                 }
 
@@ -137,9 +137,9 @@ ig.module(
             //If displaying. Then draw the display.
             if(this.display){
                 //Display the images and fonts for the UI menu
-                this.UIImage.draw(ig.game.screen.x + 64, ig.game.screen.y + 32);
-                this.suspectFont.draw("Pick Your Suspect: ", ig.game.screen.x + 96, ig.game.screen.y + 32 + 128, ig.Font.ALIGN.LEFT);
-                this.weaponFont.draw("Pick Your Weapon: ", ig.game.screen.x + 96, ig.game.screen.y + 32 + 224, ig.Font.ALIGN.LEFT);
+                this.UIImage.draw(64, 32);
+                this.suspectFont.draw("Pick Your Suspect: ", 96, 32 + 128, ig.Font.ALIGN.LEFT);
+                this.weaponFont.draw("Pick Your Weapon: ", 96, 32 + 224, ig.Font.ALIGN.LEFT);
             }
         }
     })

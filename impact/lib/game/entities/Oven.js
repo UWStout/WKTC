@@ -72,6 +72,7 @@ ig.module(
             //If the player presses E and the object is highlighted.
             if(ig.input.pressed('action') && this.currentAnim == this.anims.highlight && ig.game.frozen == false && ig.game.dialPuzzle == false && ig.game.dialSolved == false){
 
+                
                 //Spawn the UI
                 ig.game.dialPuzzle = true;
                 ig.game.spawnEntity(EntityPuzzleBox, 448, gameviewport.y );
@@ -80,6 +81,12 @@ ig.module(
                 //Spawn the puzzle and set the value
                 var temp = ig.game.spawnEntity(EntityDialPuzzle, 448, gameviewport.y);
                 temp.ovenChoice = ig.game.oChoice;
+
+                //Freeze player movement
+                ig.game.frozen = true;
+
+
+                
 
             }  
 

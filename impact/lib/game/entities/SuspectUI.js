@@ -13,7 +13,7 @@ ig.module(
         coordX: 0,
         coordY: 0,
         size: {x: 64, y: 64},
-        pos: {x: 32, y: 32},
+        pos: {x: 240, y: 128},
         
         // Cycle through the list of suspects
         changeSuspect: function(){
@@ -48,28 +48,27 @@ ig.module(
             ig.log('I Spawned');
             ig.log(this.pos)
 
-            this.pos.x = 240;
-            this.pos.y = 128;
+            this.pos.x = this.pos.x + ig.game.screen.x;
+            this.pos.y = this.pos.y + ig.game.screen.y;
         },
         draw: function(){
             this.parent();
 
             //Create a font base off the suspect and weapon selected
             var susSelect =  new ig.Font( 'media/04b03.font.png' )
-            var wepSelect =  new ig.Font( 'media/04b03.font.png' )
 
             switch(this.susNumber){
                 case 0:
-                    susSelect.draw("Sugar Cookie", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    susSelect.draw("Sugar Cookie",246,200, ig.Font.ALIGN.LEFT)
                     break;
                 case 1:
-                    susSelect.draw("Salted Caramel", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    susSelect.draw("Salted Caramel", 246,200, ig.Font.ALIGN.LEFT)
                     break;
                 case 2:
-                    susSelect.draw("Coffee Toffee", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    susSelect.draw("Coffee Toffee", 246,200, ig.Font.ALIGN.LEFT)
                     break;
                 case 3:
-                    susSelect.draw("Red Velvet", this.pos.x, this.pos.y + 72, ig.Font.ALIGN.LEFT)
+                    susSelect.draw("Red Velvet", 246,200, ig.Font.ALIGN.LEFT)
                     break;
             }
             

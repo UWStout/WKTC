@@ -18,13 +18,16 @@ ig.module(
 
             this.currentAnim = this.anims.idle
 
+            this.pos.x = this.pos.x + ig.game.screen.x;
+            this.pos.y = this.pos.y + ig.game.screen.y;
+
         },
         // Draw the box with the word "Suspect" next to it
         draw: function(){
             var font = new ig.Font( 'media/04b03.font.png' );
 
             this.parent();
-            font.draw("Suspect", this.pos.x + 64, this.pos.y + 32, ig.Font.ALIGN.CENTER);
+            font.draw("Suspect", 320 + 64, 128 + 32, ig.Font.ALIGN.CENTER);
         },
         update: function(){
             // Keep track of the mouse
