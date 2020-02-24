@@ -53,7 +53,7 @@ ig.module(
                 this.ovenCode = 350;
             }
 
-            ig.log("Code is: " + this.ovenCode + " Choice was: " + this.ovenChoice);
+           // ig.log("Code is: " + this.ovenCode + " Choice was: " + this.ovenChoice);
                 // Start of go backwards
                 if(ig.input.pressed('click') && ig.input.mouse.x > 128 && ig.input.mouse.x < 224 && ig.input.mouse.y > 150 && ig.input.mouse.y < 235)
                 {
@@ -203,7 +203,7 @@ ig.module(
             {
                 ig.game.puzzleOn = false;
                 ig.game.dialSolved = true;
-                ig.log("I won the puzzle");
+                //ig.log("I won the puzzle");
                 var ent = ig.game.getEntitiesByType(EntityPuzzleBox)[0];
                 var clo = ig.game.getEntitiesByType(EntityMenuClose)[0];
                 ent.kill();
@@ -218,7 +218,7 @@ ig.module(
             // Checks if the code entered was incorrect
             if (this.numbersEntered == 3)
             {
-                ig.log("I have reset the puzzle");
+                //ig.log("I have reset the puzzle");
                 this.codeOne = -1;
                 this.codeTwo = -1;
                 this.codeThree = -1;
